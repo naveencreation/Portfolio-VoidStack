@@ -1,6 +1,6 @@
 import { Button } from '@/components/ui/button';
 import type { Profile } from '@/types/portfolio';
-import { Github, Linkedin, Mail, ArrowRight, Code2 } from 'lucide-react';
+import { Github, Linkedin, Mail, ArrowRight } from 'lucide-react';
 
 interface HeroProps {
     profile: Profile | null;
