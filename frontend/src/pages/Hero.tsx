@@ -134,13 +134,38 @@ export function Hero({ profile }: HeroProps) {
                 </div>
             </div>
 
-            {/* Scroll indicator */}
-            <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-bounce">
-                <div className="w-6 h-10 rounded-full border-2 border-muted-foreground/30 flex justify-center pt-2">
-                    <div className="w-1 h-2 bg-primary rounded-full" />
+            {/* Scroll indicator - Animated Chevrons */}
+            <a
+                href="#about"
+                className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 group cursor-pointer"
+            >
+                <div className="flex flex-col items-center">
+                    <svg
+                        className="w-6 h-6 text-primary/60 animate-chevron-1"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                    >
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                    </svg>
+                    <svg
+                        className="w-6 h-6 text-primary/40 -mt-3 animate-chevron-2"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                    >
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                    </svg>
+                    <svg
+                        className="w-6 h-6 text-primary/20 -mt-3 animate-chevron-3"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                    >
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                    </svg>
                 </div>
-                <span className="text-xs text-muted-foreground">Scroll</span>
-            </div>
+            </a>
         </section>
     );
 }

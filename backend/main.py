@@ -14,6 +14,7 @@ from schemas import (
     ProjectResponse, SkillCategoryResponse, CertificationResponse,
     ContactMessageCreate, ContactMessageResponse, PortfolioResponse
 )
+from email_service import get_email_service
 
 # Create database tables
 Base.metadata.create_all(bind=engine)
@@ -93,6 +94,7 @@ def get_certifications(db: Session = Depends(get_db)):
 
 @app.post("/api/contact", response_model=ContactMessageResponse)
 def submit_contact(message: ContactMessageCreate, db: Session = Depends(get_db)):
+    # Save to database
     db_message = ContactMessage(
         name=message.name,
         email=message.email,
@@ -102,4 +104,17 @@ def submit_contact(message: ContactMessageCreate, db: Session = Depends(get_db))
     db.add(db_message)
     db.commit()
     db.refresh(db_message)
+    
+    # Send email notification
+    try:
+        email_svc = get_email_service()
+        email_svc.send_contact_notification(
+            name=message.name,
+            email=message.email,
+            message=message.message
+        )
+    except Exception as e:
+        # Log error but don't fail the request
+        print(f"Email notification failed: {e}")
+    
     return db_message

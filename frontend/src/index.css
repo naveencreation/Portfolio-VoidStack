@@ -47,3 +47,29 @@
     box-shadow: 0 0 40px -10px var(--color-primary);
   }
 }
+
+/* Chevron scroll animations */
+@keyframes chevron-pulse {
+  0%, 100% {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-chevron-1 {
+  animation: chevron-pulse 1.5s ease-in-out infinite;
+}
+
+.animate-chevron-2 {
+  animation: chevron-pulse 1.5s ease-in-out infinite;
+  animation-delay: 0.15s;
+}
+
+.animate-chevron-3 {
+  animation: chevron-pulse 1.5s ease-in-out infinite;
+  animation-delay: 0.3s;
+}
