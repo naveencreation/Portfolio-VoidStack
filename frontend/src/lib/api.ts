@@ -1,6 +1,7 @@
 import type { Portfolio } from '@/types/portfolio';
 
-const API_BASE = '/api';
+// Use environment variable for production, fallback to proxy for development
+const API_BASE = import.meta.env.VITE_API_URL || '/api';
 
 export async function fetchPortfolio(): Promise<Portfolio> {
     const response = await fetch(`${API_BASE}/portfolio`);
